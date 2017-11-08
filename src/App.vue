@@ -133,6 +133,7 @@ export default {
       },
       taskList: [],
       isEdit: false,
+      isSuccess: false,
     }
   },
   methods: {
@@ -146,11 +147,16 @@ export default {
     },
     selectedItem: function(item){
       this.task = item
-      this.isEdit = true
+      if(!this.isSuccess)
+        this.isEdit = true
+    },
+    successTask: function(success){
+      this.isEdit = false
     }
   },
   created() {
     window.bus.$on('selectedItem', this.selectedItem)
+    window.bus.$on('isSuccess', this.successTask)
   },
 }
 </script>
