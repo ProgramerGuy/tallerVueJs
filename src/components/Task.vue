@@ -1,5 +1,5 @@
 <template>
-	<div class="task-component container">
+	<div @click="selectedItem(task)" class="task-component container">
 		<div class="card">
 			<div class="card-image">
 				<figure class="image task-image">
@@ -16,8 +16,17 @@
 </template>
 
 <script type="text/javascript">
+	import Vue from 'vue'
+	
+	window.bus = new Vue({});
+	
 	export default{
-		props: ["task"]
+		props: ["task"],
+		methods: {
+			selectedItem: function(item){
+				bus.$emit("selectedItem",item);
+			}
+		}
 	}
 </script>
 
@@ -34,7 +43,6 @@
 	}
 
 	.task-component{
-		background-color: red;
 		width: 200px;
 	}
 </style>
