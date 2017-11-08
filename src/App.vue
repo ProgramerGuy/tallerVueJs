@@ -97,7 +97,7 @@
           </div>
           <div class="panel-block panel-border">
             <div class="control">
-              <input type="submit" value="Editar" class="button is-primary is-fullwidth is-large">
+              <input type="submit" value="Editar" class="button is-success is-fullwidth is-large">
             </div>
           </div>
         </form>
@@ -132,7 +132,7 @@ export default {
         time: 0,
       },
       taskList: [],
-      isEdit: true,
+      isEdit: false,
     }
   },
   methods: {
@@ -142,9 +142,11 @@ export default {
     },
     editTask: function(){
       this.isEdit = false
+      this.task = {}
     },
     selectedItem: function(item){
       this.task = item
+      this.isEdit = true
     }
   },
   created() {
